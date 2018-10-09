@@ -10,6 +10,9 @@ function __result(e, data){
 
 var audio_context;
 var recorder;
+var audio_array = [];
+var file_name = [];
+
 function startUserMedia(stream) {
 var input = audio_context.createMediaStreamSource(stream);
 __log('Media stream created.');
@@ -39,6 +42,34 @@ function stopRecording(button) {
 
     recorder.clear();
 }
+
+function createEnrollmentLink(audio_array, file_name){
+    var enroll_div = document.getElementById('enroll');
+    var enroll = document.createElement('a');
+    enroll.href="javascript:viod(0)";
+    enroll.innerHTML = 'Enroll Speaker';
+    enroll.addEventListener("click", function(event){
+        __log("Enroll speaker....");
+        var xhr=new XMLHttpRequest();
+        xhr.onload=function(e){
+            if(this.readyState == 4){
+                console.log("Server returned: ",e.target.responseText);
+            }
+        };
+        var fd = new FormData();
+        for (var i = 0 ; i < audio_array.length ; i++){
+            fd.append(i, audio_array[i], file_name[i]);
+        }
+        xhr.open("POST","https://su-yu.rainvisitor.me/enrollment.php",true);
+        xhr.send(fd);
+        xhr.onload = function(){
+            __clearLog();
+            __result(xhr.responseText);
+        };
+    })
+    enroll_div.appendChild(enroll);
+}
+
 function createDownloadLink() {
     recorder && recorder.exportWAV(function(blob) {
     var url = URL.createObjectURL(blob);
@@ -80,6 +111,12 @@ function createDownloadLink() {
     })
     li.appendChild(document.createTextNode (" "))//add a space in between
     li.appendChild(upload)//add the upload link to li
+
+    audio_array.push(blob)
+    file_name.push(filename)
+    if (audio_array.length == 5){
+        createEnrollmentLink(audio_array, file_name)
+    }
 
     recordingslist.appendChild(li);
     });
