@@ -66,22 +66,79 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md-4">
-            <div class="heading-wrap text-center element-animate">
+            <div class="heading-wrap text-center element-animate">                  
               <h4 id="use" class="sub-heading">Use our verification system</h4>
               <p></p>
-              <button class="btn btn-primary btn-sm" onclick="startRecording(this);">record</button>
-              <button class="btn btn-primary btn-sm" onclick="stopRecording(this);" disabled>stop</button>
-              <p></p>
-              <h2>Recordings</h2>
-              <p></p>
-              <ul id="recordingslist"></ul>
-  
-              <h4 align="center">Result</h4>
-              <p id="result" class="text-danger" align="center"></p>
 
-              <span class="badge badge-info" align="center">Log</span>
-              <p id="log" align="center"></p>
+              <div class="accordion" id="accordionExample">
+                  <div class="card">
+                    <div class="card-header" id="headingOne">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                          Verification
+                        </button>
+                      </h5>
+                    </div>
+                
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                      <div class="card-body">
+
+                          <button class="btn btn-primary btn-sm" onclick="verify_startRecording(this);">record</button>
+                          <button class="btn btn-primary btn-sm" onclick="verify_stopRecording(this);" disabled>stop</button>
+                          <p></p>
+
+                          <select id="verify_model" class="custom-select">
+                              <option value="1">Inception-ResNet-v1</option>
+                              <option value="2">x-vector</option>
+                          </select>
+
+                          <h2>Recordings</h2>
+                          <p></p>
+                          <ul id="verify_recordingslist"></ul>
               
+                          <h4 align="center">Result</h4>
+                          <p id="verify_result" class="text-danger" align="center"></p>
+            
+                          <span class="badge badge-info" align="center">Log</span>
+                          <p id="verify_log" align="center"></p>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header" id="headingTwo">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          Enrollment
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                      <div class="card-body">
+
+                        <button class="btn btn-primary btn-sm" onclick="enroll_startRecording(this);">record</button>
+                          <button class="btn btn-primary btn-sm" onclick="enroll_stopRecording(this);" disabled>stop</button>
+                          <p></p>
+
+                          <select id="enroll_model" class="custom-select">
+                              <option value="1">Inception-ResNet-v1</option>
+                              <option value="2">x-vector</option>
+                          </select>
+
+                          <h2>Recordings</h2>
+                          <p></p>
+                          <ul id="enroll_recordingslist"></ul>
+                          <div id=enroll></div>
+                          <h4 align="center">Result</h4>
+                          <p id="enroll_result" class="text-danger" align="center"></p>
+            
+                          <span class="badge badge-info" align="center">Log</span>
+                          <p id="enroll_log" align="center"></p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
               <!-- <p><a href="#" class="btn btn-primary btn-sm">Verification</a></p> -->
             </div>
           </div>
@@ -165,9 +222,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.waypoints.min.js"></script>
     <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/html_record.js"></script>
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/magnific-popup-options.js"></script>
+    <script src="js/html_record.js"></script>
 
     <script src="js/main.js"></script>
   </body>
