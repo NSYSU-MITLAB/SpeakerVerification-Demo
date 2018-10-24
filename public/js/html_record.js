@@ -114,10 +114,10 @@ function createVerifyLink() {
 
         if (model == 1){
             // Use Inception-ResNet-v1 model
-            xhr.open("POST","https://su-yu.rainvisitor.me/xvector-verify.php",true); 
+            xhr.open("POST","https://su-yu.rainvisitor.me/inception_verify.php",true); 
         }else{
             // Use x-vector model
-            xhr.open("POST","https://su-yu.rainvisitor.me/xvector-verify.php",true);
+            xhr.open("POST","https://su-yu.rainvisitor.me/xvector_verify.php",true);
         }
 
         xhr.send(fd);
@@ -157,10 +157,10 @@ function createEnrollmentLink(audio_array, file_name){
 
         if (model == 1){
             // Use Inception-ResNet-v1 model
-            xhr.open("POST","https://su-yu.rainvisitor.me/xvector-enrollment.php",true); 
+            xhr.open("POST","https://su-yu.rainvisitor.me/inception_enrollment.php",true); 
         }else{
             // Use x-vector model
-            xhr.open("POST","https://su-yu.rainvisitor.me/xvector-enrollment.php",true);
+            xhr.open("POST","https://su-yu.rainvisitor.me/xvector_enrollment.php",true);
         }
 
         xhr.send(fd);
