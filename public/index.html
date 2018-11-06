@@ -86,23 +86,19 @@
                           <button class="btn btn-primary btn-sm" onclick="verify_startRecording(this);">record</button>
                           <button class="btn btn-primary btn-sm" onclick="verify_stopRecording(this);" disabled>stop</button>
                           <p></p>
-
+                          <h6>Choose model:</h5>
                           <select id="verify_model" class="custom-select">
-                              <option value="1">Inception-ResNet-v1</option>
                               <option value="2">x-vector</option>
+                              <option value="1">Inception-ResNet-v1</option>
                           </select>
-                          
-                          <h5>Your speaker ID:</h5>
-                          <select id="speaker_id" class="custom-select">
-                            <% for ( var i = 0 ; i < data.length ; i++){ %>
-                            <option value=<%= data[i].Speaker  %>><%= data[i].Speaker  %></option>
-                            <% } %>
-                          </select>
+                          <p></p>
+                          <h6>Your speaker ID:</h5>
+                          <input class="form-control" type="text"  id="input_id" placeholder="">
 
                           <div style="text-align: center;">
                             <h2>Recordings</h2>
                             <p></p>
-                            <ul id="verify_recordingslist"></ul>
+                            <div id="verify_recordingslist" style="text-align: center;"></div>
                 
                             <h4 align="center">Result</h4>
                             <p id="verify_result" class="text-danger" align="center"></p>
@@ -127,16 +123,16 @@
                         <button class="btn btn-primary btn-sm" onclick="enroll_startRecording(this);">record</button>
                           <button class="btn btn-primary btn-sm" onclick="enroll_stopRecording(this);" disabled>stop</button>
                           <p></p>
-
+                          <h6>Choose model:</h5>
                           <select id="enroll_model" class="custom-select">
-                              <option value="1">Inception-ResNet-v1</option>
                               <option value="2">x-vector</option>
+                              <option value="1">Inception-ResNet-v1</option>
                           </select>
                         
                           
                             <h2>Recordings</h2>
                             <p></p>
-                            <ul id="enroll_recordingslist"></ul>
+                            <div id="enroll_recordingslist"></div>
                             <div id=enroll></div>
                             <h4 align="center">Result</h4>
                             <p id="enroll_result" class="text-danger" align="center"></p>

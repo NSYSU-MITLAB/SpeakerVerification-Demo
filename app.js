@@ -9,11 +9,11 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
-var cors = require('cors')
-app.use(cors())
+var cors = require('cors');
+app.use(cors());
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '/'));
 app.set('view engine', 'jade');
 
 
@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/views', indexRouter);
 app.use('/users', usersRouter);
 
 

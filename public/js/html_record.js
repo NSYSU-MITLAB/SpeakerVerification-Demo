@@ -23,6 +23,7 @@ var recorder;
 var audio_array = [];
 var file_name = [];
 
+
 function startUserMedia(stream) {
 var input = audio_context.createMediaStreamSource(stream);
     __log('Media stream created.');
@@ -111,6 +112,12 @@ function createVerifyLink() {
         };
         var fd=new FormData();
         fd.append("audio_data",blob, filename);
+        
+        //var spk_e = document.getElementById('speaker_id');
+        //var spk_id = spk_e.options[spk_e.selectedIndex].value;
+        var spk_id = document.getElementById("input_id").value;
+        __vlog(`You claimed your ID is ${spk_id}`);
+        fd.append("speaker_id",spk_id);
 
         if (model == 1){
             // Use Inception-ResNet-v1 model
@@ -218,4 +225,5 @@ window.onload = function init() {
     __log('No live audio input: ' + e);
     __vlog('No live audio input: ' + e);
     });
+
 };
